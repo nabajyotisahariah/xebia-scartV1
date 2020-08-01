@@ -53,7 +53,7 @@ export const _productRequestAction = () => {
         });  
     }
 }
-
+//https://reactjs.org/docs/faq-ajax.html
 export const productRequestAction = () => {
     return (dispatch) => {
         dispatch(productInitiateAction());
