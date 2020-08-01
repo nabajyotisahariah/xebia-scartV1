@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
 const path = require( 'path' );
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     context: __dirname,
@@ -9,16 +10,16 @@ module.exports = {
             app: './src/index.js',
             //print: './src/print.js',
     },
-    devtool: 'inline-source-map',
+    //devtool: 'inline-source-map',
     output: {
-        path: path.resolve( __dirname, 'dist' ),
+        path: path.resolve( __dirname, 'build' ),
         //filename: 'main.js',
         filename: '[name].bundle.js',
         publicPath: '/',
     },
     devServer: {
         historyApiFallback: true,
-        contentBase: './dist',
+        contentBase: './build',
      },
     module: {
         rules: [
@@ -39,6 +40,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+        //new webpack.optimize.UglifyJsPlugin({}),
         new HtmlWebPackPlugin({            
             title: 'Output Management',
             template: path.resolve( __dirname, 'public/index.html' ),
